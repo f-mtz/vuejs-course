@@ -1,3 +1,5 @@
 <template>
-    <h2>Componente Vue.JS Avançado</h2>
+    <div>
+        <slot></slot>
+    </div>
 </template>

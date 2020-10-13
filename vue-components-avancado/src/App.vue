@@ -1,9 +1,11 @@
 <template>
   <div id="app">
-
     <h1>Vue JS</h1>
+    <Post>
+      <h1>Components no Vue</h1>
+      <p>Components são muito importantes</p>
+    </Post>
 
-    <Post/>
   </div>
 </template>
 
@@ -14,6 +16,5 @@ export default {
   components: {
     Post
   }
-
 }
 </script>
