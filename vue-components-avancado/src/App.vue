@@ -4,38 +4,49 @@
        <div class="topo"><img src="./imagens/vue-icon.png"></div>
        <div class=""><h1>Vue JS</h1></div>
     </div>
-    <div></div>
-    <Post>
-      <h1 slot="cabecalho">Components no Vue</h1>
-      <template slot="">
-        <!-- 1 - A LINHA A SEGUIR MOSTRA QUE É POSSÍVEL APLICAR ESTILO NO ESCOPO DO COMPONENT FILHO MESMO ESTANDO NO ESCOPO DO COMPONENT PAI -->
 
-        <p class="estilo-filho-no-pai">1) Um slot sem o atributo "name" é um slot padrão</p>
+    <h1>Forma padrão</h1>
+    <PostsLista :posts="posts"/>
 
-        <!-- 2 - JÁ A LINHA A SEGUIR MOSTRA UMA ESTILIZAÇÃO DEFINIDA NO ESCOPO DO COMPONENTE FILHO APLICADA AO COMPONENT FILHO MESMO ESSE COMPONENT FILHO ESTANDO NO ESCOPO DO COMPONENT PAI-->
-        <p class="estilo-filho-no-filho">2 ) Um slot padrão recebe todo e qualquer elemento HTML dentro do Component que não faça referência a um slot nomeado<p>
-        <p>3) Se um slot tiver o atributo name, porém ele estiver vazio, ele não recebe conteúdos</p>
-        <span>...</span>
+    <hr>
+
+    <h1>Slost com Escopo</h1>
+    <PostsLista :posts="posts">
+      <template slot-scope="slotProps">
+        <h2 style="color:blue">{{ slotProps.meuPost.titulo }}</h2>
+        <p> {{ slotProps.meuPost.conteudo }} </p>
+        <small> {{slotProps.meuPost.autor }} </small>
       </template>
-      <!-- 3 - CONCLUSÃO, A REGRA GERAL É SIMPLES, CADA ELEMENTO VAI COMPILAR COM O SEU PRÓPRIO ESCOPO -->
+    </PostsLista>
 
-      <small slot="rodape">{{ autor }}</small>
-      <template slot="botao">Detalhes</template>
-    </Post>
+    <PostsLista :posts="posts">
+      <template slot-scope="slotProps">
+        <h2 style="color:red">{{ slotProps.meuPost.titulo }}</h2>
+        <p> {{ slotProps.meuPost.conteudo }} </p>
+        <small> {{slotProps.meuPost.autor }} </small>
+      </template>
+    </PostsLista>
+  <!-- RESUMO DA AULA:
+
+       O CONCEITO DE SLOTS COM ESCOPO É IMPORTANTE POIS PERMITE POR EXEMPLO IMPLEMENTAR LAYOUTS CUSTOMIZADOS E REUTILIZÁVEIS POPULADOS PELA APLICAÇÃO
+  -->
   </div>
 </template>
 
 <script>
-
-import Post from './components/Post.vue'
+import PostsLista from './components/PostsLista.vue'
 
 export default {
   components: {
-    Post
+    PostsLista
   },
   data () {
     return {
-      autor: 'Plínio Naves'
+      posts: [
+        { id: 1, titulo: 'Components no Vue', conteudo: 'Components são uma das peças mais importantes no Vue', autor: 'Plinio Naves' },
+        { id: 2, titulo: 'Distribuindo conteúdos com slots', conteudo: 'Slots podem ser usados como repositórios de código HTML', autor: 'Plinio Naves' }
+
+      ]
     }
   }
 }
