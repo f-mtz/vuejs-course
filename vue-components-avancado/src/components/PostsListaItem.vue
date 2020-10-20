@@ -1,17 +1,17 @@
 <template>
     <div class="post">
-
+        <!-- ESSE COMPONENT VAI FUNCIONAR COMO UM MODELO DE TUPLA/OCORRENCIA/REGISTRO -->
         <slot>
             <div class="post-cabecalho">
-                <h2>{{ post.titulo }}</h2>
+                <h2>{{ ocorrencia.titulo }}</h2>
             </div>
 
                 <div class="post-conteudo">
-                   <p>{{ post.conteudo }}</p>
+                   <p>{{ ocorrencia.conteudo }}</p>
                 </div>
 
                 <div class="post-rodape">
-                    <small>{{ post.autor }}</small>
+                    <small>{{ ocorrencia.autor }}</small>
                         <a href="#" class="link">Ler mais ...</a>
             </div>
         </slot>
@@ -22,7 +22,7 @@
 <script>
 export default {
   props: {
-    post: {
+    ocorrencia: {
       type: Object,
       required: true
     }
