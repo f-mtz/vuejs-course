@@ -6,11 +6,13 @@
     <button @click="componentSelecionado = 'Sobre'">Sobre</button>
 
     <p> {{ componentSelecionado }} </p>
-    <!-- ESSA É UMA DAS FORMAS RECOMENDADAS -->
-    <component
-      :is="componentSelecionado"
-      v-bind="propsAtuais">
-    </component>
+    <!-- A TAG KEEP-ALIVE DO VUE GUARDA O ESTADO DO COMPONENTS EM CACHE -->
+    <keep-alive>
+       <component
+        :is="componentSelecionado"
+        v-bind="propsAtuais">
+      </component>
+    </keep-alive>
 
   </div>
 </template>
