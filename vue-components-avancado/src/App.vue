@@ -6,8 +6,8 @@
     <button @click="componentSelecionado = 'Sobre'">Sobre</button>
 
     <p> {{ componentSelecionado }} </p>
-    <!-- A TAG KEEP-ALIVE DO VUE GUARDA O ESTADO DO COMPONENTS EM CACHE -->
-    <keep-alive>
+    <!-- AGORA APENAS O COMPONENT SOBRE FICA EM CACHE (HARD CODE) -->
+    <keep-alive include="Sobre">
        <component
         :is="componentSelecionado"
         v-bind="propsAtuais">
