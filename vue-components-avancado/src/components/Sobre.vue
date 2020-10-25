@@ -21,6 +21,12 @@ export default {
   },
   destroyed () {
     console.log('Destroyed!')
+  },
+  activated () {
+    console.log('Esse Component está ativado')
+  },
+  deactivated () {
+    console.log('Esse Component está desativado')
   }
 }
 </script>
