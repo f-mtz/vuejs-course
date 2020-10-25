@@ -6,11 +6,6 @@
     <button @click="componentSelecionado = 'Sobre'">Sobre</button>
 
     <p> {{ componentSelecionado }} </p>
-    <!-- A FORMA ABAIXO NÃO É RECOMENDADA, EXPLICAÇÃO NA AULA DE ATRIBUTOS NON-PROPS -->
-    <component
-      :is="componentSelecionado"
-      :posts="objs">
-    </component>
     <!-- ESSA É UMA DAS FORMAS RECOMENDADAS -->
     <component
       :is="componentSelecionado"
