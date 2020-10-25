@@ -6,8 +6,36 @@
     <button @click="componentSelecionado = 'Sobre'">Sobre</button>
 
     <p> {{ componentSelecionado }} </p>
-    <!-- AGORA APENAS O COMPONENT SOBRE FICA EM CACHE (HARD CODE) -->
-    <keep-alive include="Sobre">
+    <!--
+      ALÉM DO SELETOR DO COMPONENT, PODERIAMOS PASSAR STRINGS, UM ARRAY DE SELETORES E ATÉ PASSAR REGEX
+      DE FORMA DINAMICA, VEJAMOS UM EXEMPLO -->
+
+      <!-- PASSANDO UM ARRAY -->
+    <keep-alive :exclude="['Home', 'PostsLista']">
+       <component
+        :is="componentSelecionado"
+        v-bind="propsAtuais">
+      </component>
+    </keep-alive>
+
+    <hr>
+    <h1>Components Dinâmicos</h1>
+    <button @click="componentSelecionado = 'Home'">Home</button>
+    <button @click="componentSelecionado = 'PostsLista'">Posts</button>
+    <button @click="componentSelecionado = 'Sobre'">Sobre</button>
+
+    <p> {{ componentSelecionado }} </p>
+
+    <!-- PASSANDO UMA REGEX -->
+    <keep-alive :exclude="/Home|Sobre/">
+       <component
+        :is="componentSelecionado"
+        v-bind="propsAtuais">
+      </component>
+    </keep-alive>
+    <hr>
+    <!-- LIMITANDO A QUANTIDADE DE INSTANCIAS EM CACHE (POR PERFORMANCE POR EXEMPLO) -->
+     <keep-alive max="2">
        <component
         :is="componentSelecionado"
         v-bind="propsAtuais">
