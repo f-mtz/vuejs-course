@@ -27,6 +27,7 @@ import Sobre from './components/Sobre.vue'
 
 export default {
   components: {
+    Assincrono: () => import('./components/Assincrono.vue'),
     Home,
     PostsLista,
     Sobre

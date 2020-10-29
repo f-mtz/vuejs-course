@@ -11,10 +11,10 @@ Vue.config.productionTip = false
   }, 2000)
 })
  */
-Vue.component(
+/* Vue.component(
   'Assincrono',
   () => import('./components/Assincrono.vue')
-)
+) */
 
 new Vue({
   render: h => h(App)
